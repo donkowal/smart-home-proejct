@@ -1,27 +1,13 @@
-import requests
-import json
+from ppadb.client import Client as AdbClient
 
+# Połączenie z serwerem ADB
+client = AdbClient(host="127.0.0.1", port=5037)
 
-# Adres API telewizora (zmień na właściwy)
-url = "http://192.168.1.11:1925/1/input/key"
+# Wskaż urządzenie (TV)
+device = client.device("192.168.1.11:5555")
 
-# Wczytanie pliku JSON
-with open("dane.json", "r", encoding="utf-8") as f:
-    data = json.load(f)
+# Wyślij przycisk HOME
+device.shell("input keyevent 3")
 
-# Nagłówki HTTP (często wymagane przez API)
-headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-    # "Authorization": "Bearer TWÓJ_TOKEN"   # jeśli API wymaga autoryzacji
-}
-
-# Wysyłanie żądania POST
-response = requests.post(url, headers=headers, json=data)
-
-# Sprawdzenie odpowiedzi
-if response.status_code == 200:
-    print("Plik JSON wysłany poprawnie!")
-    print("Odpowiedź telewizora:", response.json())
-else:
-    print("Błąd podczas wysyłania:", response.status_code, response.text)
+# Wyślij Volume Up
+device.shell("input keyevent 24")
