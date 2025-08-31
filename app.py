@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request, jsonify
+import functions  # import naszego pliku z funkcjami
+
+#functions.startup,
 
 app = Flask(__name__)
 
@@ -10,7 +13,22 @@ def home():
 def click():
     data = request.json
     button_number = data.get('button')
-    return jsonify({"message": f"Kliknąłeś przycisk {button_number}!"})
+
+    # mapowanie numeru przycisku na funkcję
+    func_map = {
+        "1": functions.func1,
+        "2": functions.func2,
+        "3": functions.func3,
+        "4": functions.func4
+    }
+
+    func_to_call = func_map.get(button_number)
+    if func_to_call:
+        message = func_to_call()
+    else:
+        message = "Nieznany przycisk!"
+
+    return jsonify({"message": message})
 
 if __name__ == '__main__':
     app.run(debug=True)
