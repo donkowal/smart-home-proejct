@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosta aplikacja interaktywna</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Prosta aplikacja z przyciskami</h1>
+    <div class="button-container">
+        <button data-btn="1">1</button>
+        <button data-btn="2">2</button>
+        <button data-btn="3">3</button>
+        <button data-btn="4">4</button>
+    </div>
+    <p id="result"></p>
+
+    <script>
+        const buttons = document.querySelectorAll('button');
+        const result = document.getElementById('result');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const btnNumber = button.dataset.btn;
+                fetch('/click', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ button: btnNumber })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    result.textContent = data.message;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
