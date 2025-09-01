@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import functions  # import naszego pliku z funkcjami
+import scenes
 
 app = Flask(__name__)
 
@@ -14,10 +15,10 @@ def click():
 
     # mapowanie numeru przycisku na funkcję
     func_map = {
-        "1": functions.SOUND_on_off,
-        "2": functions.TVvol_UP,
-        "3": functions.SOUND_input_AUX,
-        "4": functions.TVvol_Down,
+        "1": scenes.TV,
+        "2": scenes.Projektor,
+        "3": scenes.All_off,
+        "4": functions.Klima_on_off,
     }
 
     func_to_call = func_map.get(button_number)
