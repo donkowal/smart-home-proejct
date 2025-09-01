@@ -36,8 +36,4 @@ def SOUND_input_PC():
 def SOUND_input_AUX():
     return "SOUND_input_AUX"
 
-def COM_close():
-    IR.COM_close()
-    return "SOUND_input_AUX"
-
 #   PC controller

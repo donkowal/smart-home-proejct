@@ -17,7 +17,7 @@ def click():
         "1": functions.SOUND_on_off,
         "2": functions.TVvol_UP,
         "3": functions.SOUND_input_AUX,
-        "4": functions.COM_close,
+        "4": functions.TVvol_Down,
     }
 
     func_to_call = func_map.get(button_number)

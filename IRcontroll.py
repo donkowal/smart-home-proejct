@@ -18,22 +18,13 @@ import time
 #Klima: (sendNEC)
 #    power: (0xE710, 0x0, <numberOfRepeats>)
 
-# Ustaw odpowiedni port COM (Windows: "COM3", Linux/Mac: "/dev/ttyUSB0")
-PORT = "COM4"
-BAUDRATE = 9600
-
-# otwieramy port
-arduino = serial.Serial(PORT, BAUDRATE, timeout=1)
-time.sleep(2)  # chwila na inicjalizację Arduino
-
-print("Połączono z Arduino")
-
 def Sound_on_off():
+    PORT = "COM4"
+    BAUDRATE = 9600
+    arduino = serial.Serial(PORT, BAUDRATE, timeout=1)
+    print("Połączono z Arduino")
+    time.sleep(2)  # chwila na inicjalizację Arduino
     arduino.write((1 + "\n").encode())  # wysyłamy numer funkcji
     print("Wywołano Sound on in IRcontroll")
-    return  "Sound on/off"
-
-def COM_close():
     arduino.close()
-    print("zamknieto")
-    return("COM closed")
+    return  "Sound on/off"
