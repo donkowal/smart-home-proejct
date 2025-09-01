@@ -1,0 +1,11 @@
+Sony:
+    VOL up: 0x812
+    VOL down: 0x813
+    power: 0x815
+    PC: 0x869
+    TV: 0x87D
+    AUX: 0x825
+
+Epson:
+    power: 0x6F905583
+
