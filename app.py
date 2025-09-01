@@ -14,15 +14,16 @@ def click():
 
     # mapowanie numeru przycisku na funkcję
     func_map = {
-        "1": functions.func1,
-        "2": functions.func2,
-        "3": functions.func3,
-        "4": functions.func4
+        "1": functions.SOUND_on_off,
+        "2": functions.TVvol_UP,
+        "3": functions.SOUND_input_AUX,
+        "4": functions.COM_close,
     }
 
     func_to_call = func_map.get(button_number)
     if func_to_call:
         message = func_to_call()
+        print("wywołano")
     else:
         message = "Nieznany przycisk!"
 
