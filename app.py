@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import functions  # import naszego pliku z funkcjami
 
-#functions.startup,
-
 app = Flask(__name__)
 
 @app.route('/')
