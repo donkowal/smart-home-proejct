@@ -1,5 +1,6 @@
 import IRcontroll as IR
 import TVcontroll as TV
+import PCcontroller as PC
 #--------------------------------------------#
 #   TV controller
 #--------------------------------------------#
@@ -57,6 +58,7 @@ def Klima_on_off():
 #--------------------------------------------#
 
 def PC_on():
+    PC.PC_on()
     return  "PC  turned  on"
 
 #--------------------------------------------#

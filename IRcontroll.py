@@ -67,12 +67,15 @@ def Klima_on_off():
 #--------------------------------------------#
 
 def send_msg(cmd):
-    PORT = "COM4"
-    BAUDRATE = 9600
-    arduino = serial.Serial(PORT, BAUDRATE, timeout=1)
-    print("Połączono z Arduino")
-    time.sleep(1)  # chwila na inicjalizację Arduino
-    arduino.write((cmd + "\n").encode())
-    print("IR cmd send")
-    arduino.close()
-    return  "IR cmd send"
+    try:
+        PORT = "COM4"
+        BAUDRATE = 9600
+        arduino = serial.Serial(PORT, BAUDRATE, timeout=1)
+        print("Połączono z Arduino")
+        time.sleep(1)  # chwila na inicjalizację Arduino
+        arduino.write((cmd + "\n").encode())
+        print("IR cmd send")
+        arduino.close()
+        return  "IR cmd send"
+    except:
+        print("błąd komunikacji z arduino")

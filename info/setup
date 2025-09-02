@@ -3,3 +3,5 @@ pip install pyserial
 pip install flask
 
 pip install
+
+pip install wakeonlan
